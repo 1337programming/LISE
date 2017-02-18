@@ -49,5 +49,13 @@ jspm_packages
 .yarn-integrity
 
 # Examples
-references
+references/
+
+# IDEs and editors
+/.idea
+/.vscode
+.project
+.classpath
+*.launch
+.settings
 
