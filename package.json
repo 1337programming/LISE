@@ -1,0 +1,42 @@
+{
+  "name": "lise",
+  "version": "1.0.0",
+  "description": "life in shambles engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress --profile --watch --inline --hot",
+    "lint": "tslint \"src/**/*.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1337programming/LISE.git"
+  },
+  "author": "Patrick Opie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1337programming/LISE/issues"
+  },
+  "homepage": "https://github.com/1337programming/LISE#readme",
+  "dependencies": {
+    "@types/jasmine": "^2.5.43",
+    "@types/node": "^7.0.5",
+    "@types/three": "^0.83.3",
+    "awesome-typescript-loader": "^3.0.4",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.10.0",
+    "html-webpack-plugin": "^2.28.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.1",
+    "style-loader": "^0.13.1",
+    "three": "^0.84.0",
+    "to-string-loader": "^1.1.5",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.6",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  }
+}
