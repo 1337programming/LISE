@@ -3,6 +3,7 @@ const path = require('path');
 
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 /*
  * Webpack Constants
@@ -10,7 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'LICE',
+  title: 'LISE',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer(),
   HMR: HMR,
@@ -20,7 +21,8 @@ const METADATA = {
 module.exports = function (env) {
   var prod = env ? env.production : false;
   
-  var config =  {
+  return {
+    
     /**
      * Developer tool to enhance debugging
      *
@@ -38,30 +40,36 @@ module.exports = function (env) {
     entry: {
       'main': './src/main.ts'
     },
-  
-  
+    
     /**
      * Options affecting the output of the compilation.
      *
      * See: http://webpack.github.io/docs/configuration.html#output
      */
     output: helpers.output(prod),
-  
+    
     /**
      * Options affecting the resolving of modules.
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve
      */
     resolve: {
-    
+      
       /**
        * An array of extensions that should be used to resolve modules.
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
       extensions: ['.ts', '.js', '.json'],
-    
+      
       // An array of directory names to be resolved to the current directory
-      modules: [path.resolve('src'), path.resolve('node_modules')]
+      modules: [path.resolve('src'), path.resolve('node_modules')],
+      
+      plugins: [
+  
+        // @TODO figure out why tsconfig paths aren't being resolved
+        new TsConfigPathsPlugin(/* { tsconfig, compiler } */)
+      ]
+      
     },
     
     module: {
@@ -83,9 +91,9 @@ module.exports = function (env) {
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'body'
-      })
+      }),
     ],
-  
+    
     /**
      * Webpack Development Server configuration
      * Description: The webpack-dev-server is a little node.js Express server.
@@ -103,7 +111,7 @@ module.exports = function (env) {
         poll: 1000
       }
     },
-  
+    
     /**
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
@@ -119,7 +127,4 @@ module.exports = function (env) {
       setImmediate: false
     }
   };
-  
-  console.log(config.module.rules);
-  return config;
 };

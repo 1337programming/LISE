@@ -20,7 +20,6 @@
         "./src/core/*"
       ]
     },
-    "mapRoot": "./",
     "typeRoots": [
       "node_modules/@types"
     ],

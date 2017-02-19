@@ -20,7 +20,6 @@ import {
   Intersection
 } from 'three';
 import { PointerLockControls } from './core/controls/PointerLockControls';
-// import { PointerLockControls } from './vendor/PointerLockControls'; // @TODO Fix class
 
 let camera: PerspectiveCamera, scene: Scene, renderer: WebGLRenderer;
 let geometry: PlaneGeometry, material, mesh;

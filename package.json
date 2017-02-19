@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --progress --profile --watch --inline --hot",
+    "build": "webpack --progress --profile --env.production",
     "lint": "tslint \"src/**/*.ts\""
   },
   "repository": {

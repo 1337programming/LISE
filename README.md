@@ -26,3 +26,13 @@ Build:
 - Test: (Comming Soon)
 - Lint: `npm run lint`
 
+
+## TODO
+
+- [ ] Abstract main
+- [ ] Import MVC (Angular 2 or React or Vue)
+- [ ] AI Design Pattern
+- [ ] Model Design Pattern
+- [ ] Physics Solution (Probably Ammo)
+- [ ] Create Game POC Submodule
+
