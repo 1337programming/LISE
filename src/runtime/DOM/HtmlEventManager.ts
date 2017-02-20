@@ -1,11 +1,12 @@
-import { DOM } from './DOM';
+import { DomBase } from './DomBase';
 import { DebugLogger } from '@core/Logging/DebugLogger';
 
 /**
  * @description Manages DOM events
  * @module DOM
+ * @singleton
  */
-export class EventManager extends DOM {
+export class HtmlEventManager extends DomBase {
   
   private eventMap: {[name: string]: DOMEvent};
   private keyStore: string[];
@@ -60,6 +61,7 @@ export class EventManager extends DOM {
     for (let i: number = 0; i < this.keyStore.length; i++) {
       this.eventMap[this.keyStore[i]].target.removeEventListener(this.eventMap[this.keyStore[i]].name);
     }
+    this.keyStore = [];
   }
   
   private removeKey(key: string): void {

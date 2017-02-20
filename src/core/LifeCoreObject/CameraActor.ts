@@ -6,4 +6,9 @@ import { Actor } from './Actor';
  */
 export class CameraActor extends Actor {
   
+  constructor(private near: number, private far: number) {
+    super();
+  }
+  
 }
+
