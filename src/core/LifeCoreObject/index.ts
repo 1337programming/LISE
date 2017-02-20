@@ -1,0 +1,1 @@
+export { CoreObjectBase } from './CoreObjectBase';

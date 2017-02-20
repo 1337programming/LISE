@@ -11,7 +11,7 @@ Clone:
 `git clone https://github.com/1337programming/LISE.git`
 
 Install:
-`npm install`
+`npm install` or `yarn install`
 
 Run:
 `npm start`
@@ -30,6 +30,7 @@ Build:
 ## TODO
 
 - [ ] Abstract main
+- [ ] Ava Testing (Remove Jasmine)
 - [ ] Import MVC (Angular 2 or React or Vue)
 - [ ] AI Design Pattern
 - [ ] Model Design Pattern

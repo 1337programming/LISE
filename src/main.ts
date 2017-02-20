@@ -19,7 +19,14 @@ import {
   FlatShading,
   Intersection
 } from 'three';
-import { PointerLockControls } from './core/controls/PointerLockControls';
+import { PointerLockControls } from './runtime/actor/controls/PointerLockControls';
+
+// Mock Game
+function main() {
+  
+}
+
+main();
 
 let camera: PerspectiveCamera, scene: Scene, renderer: WebGLRenderer;
 let geometry: PlaneGeometry, material, mesh;
