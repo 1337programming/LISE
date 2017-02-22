@@ -1,6 +1,6 @@
 /**
  * @module Logger
- * @description Debug logger
+ * Debug logger
  */
 export class DebugLogger {
   

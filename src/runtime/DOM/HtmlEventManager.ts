@@ -2,7 +2,7 @@ import { DomBase } from './DomBase';
 import { DebugLogger } from '@core/Logging/DebugLogger';
 
 /**
- * @description Manages DOM events
+ * Manages DOM events
  * @module DOM
  * @singleton
  */

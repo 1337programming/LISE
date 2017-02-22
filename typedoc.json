@@ -1,5 +1,5 @@
 {
-  "mode": "modules",
+  "mode": "file",
   "out": "documentation/api",
   "theme": "default",
   "ignoreCompilerErrors": "true",

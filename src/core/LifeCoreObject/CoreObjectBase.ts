@@ -1,5 +1,5 @@
 /**
- * @description Base class for CoreObject
+ * Base class for CoreObject
  * @module LifeCoreObject
  */
 export class CoreObjectBase {

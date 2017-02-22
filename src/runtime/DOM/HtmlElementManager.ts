@@ -4,7 +4,7 @@ import { DebugLogger } from '@core/Logging/DebugLogger';
 
 /**
  * @module DOM
- * @description Manages all HtmlElements
+ * Manages all HtmlElements
  * @singleton
  * @author Patrick Opie
  */

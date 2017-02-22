@@ -120,7 +120,7 @@ function init(): void {
   controls = new PointerLockControls(camera);
   scene.add(controls.getObject());
   
-  let onKeyDown = (event) => {
+  let onKeyDown = (event: KeyboardEvent) => {
     
     switch (event.keyCode) {
       
@@ -153,7 +153,7 @@ function init(): void {
     
   };
   
-  let onKeyUp = (event) => {
+  let onKeyUp = (event: KeyboardEvent) => {
     
     switch (event.keyCode) {
       
@@ -318,28 +318,30 @@ function animate(): void {
   renderer.render(scene, camera);
   
 }
-/*
- let scene: Scene = new Scene();
- let camera: PerspectiveCamera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
- 
- let renderer = new WebGLRenderer();
- renderer.setSize(window.innerWidth, window.innerHeight);
- document.body.appendChild(renderer.domElement);
- 
- let geometry: BoxGeometry = new BoxGeometry(1, 1, 1);
- let material: MeshBasicMaterial = new MeshBasicMaterial({color: 0x00ff00});
- let cube: Mesh = new Mesh(geometry, material);
- scene.add(cube);
- 
- camera.position.z = 5;
- 
- function render(): void {
- requestAnimationFrame(render);
- cube.rotation.x += 0.1;
- cube.rotation.y += 0.1;
- renderer.render(scene, camera);
- }
- 
- render();
+
+/**
+ * LOADING STATE
+ * 1. Check if Browser Supports Pointerlock
+ * 2. Load HTML
+ * 3. Add Pointerlock Events
+ *
+ * IDLE STATE
+ * 4. Menu Screen
+ * 5. Init World:
+ *    Create Camera, Scene, and lights
+ *    Load Key Events
+ *    Set RayCaster
+ *    Set Geometry
+ *    Load Boxes
+ *    Init Renderer
+ *    Append renderer domElement
+ *    Add On Window Resize Event
+ * 6. Animate (Game Loop)
+ *    requestAnimationFrame load animate to start loop
+ *    a. Check if controls enabled
+ *    b. Character Events
+ *    c. Track time
+ *    d. Render Scene and Camera
+ *
  */
 

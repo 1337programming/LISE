@@ -1,5 +1,6 @@
 import { Camera, Object3D, Vector3, Euler } from 'three';
-import { PI_2 } from '../constants';
+import { PI_2 } from '../../../core/Constants/Math';
+
 
 export class PointerLockControls {
   

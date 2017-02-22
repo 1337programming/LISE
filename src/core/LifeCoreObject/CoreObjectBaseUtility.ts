@@ -1,7 +1,8 @@
 import { CoreObjectBase } from './CoreObjectBase';
 
 /**
- * @description Utility Base class for CoreObject
+ * Utility Base class for CoreObject
+ * @namespace LifeCoreObject
  * @module LifeCoreObject
  */
 export class CoreObjectBaseUtility extends CoreObjectBase {

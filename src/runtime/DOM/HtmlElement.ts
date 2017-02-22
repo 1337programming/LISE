@@ -3,7 +3,7 @@ import { HtmlDocument } from './HtmlDocument';
 import { DebugLogger } from '@core/Logging/DebugLogger';
 
 /**
- * @description HtmlElement Instance Class
+ * HtmlElement Instance Class
  * @module DOM
  */
 export class HtmlElement extends Html {

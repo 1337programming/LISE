@@ -2,7 +2,7 @@ import { WebGLRenderer, Scene, Camera } from 'three';
 
 /**
  * @module Level
- * @description Viewport Base Class
+ * Viewport Base Class
  *
  */
 export class Viewport {

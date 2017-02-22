@@ -4,7 +4,7 @@ import { HtmlElement } from './HtmlElement';
 import { HtmlEventManager } from './HtmlEventManager';
 
 /**
- * @description Static class to Handle all Document events
+ * Static class to Handle all Document events
  * @module DOM
  * @singleton
  * @author Patrick Opie
