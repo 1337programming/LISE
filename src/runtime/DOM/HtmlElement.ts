@@ -14,6 +14,7 @@ export class HtmlElement extends Html {
   constructor(private id: string, private htmlDocument: HtmlDocument,
               state: HtmlElementDisplayState = HtmlElementDisplayState.Box) {
     super();
+    this.setElement(id);
     this.setDisplay(state);
   }
   
@@ -25,12 +26,16 @@ export class HtmlElement extends Html {
     switch (state) {
       case HtmlElementDisplayState.Box:
         this.writeDisplay('box');
+        break;
       case HtmlElementDisplayState.Hidden:
         this.writeDisplay('none');
+        break;
       case HtmlElementDisplayState.Empty:
         this.writeDisplay('');
+        break;
       default:
-        DebugLogger.warning(`HtmlElement: Invalid state: ${HtmlElementDisplayState[state]}`);
+        DebugLogger.warning(`HtmlElement: Invalid state`);
+        break;
     }
   }
   

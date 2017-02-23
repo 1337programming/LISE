@@ -146,7 +146,6 @@ export class GameInstance extends Actor {
         scope.instructions.style.display = 'none';
       
         // Ask the browser to lock the pointer
-        element.requestPointerLock = element.requestPointerLock;
         element.requestPointerLock();
       
       }, false);

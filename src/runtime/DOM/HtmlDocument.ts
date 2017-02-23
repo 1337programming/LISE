@@ -2,6 +2,7 @@ import { Html } from './Html';
 import { HtmlElementManager } from './HtmlElementManager';
 import { HtmlElement } from './HtmlElement';
 import { HtmlEventManager } from './HtmlEventManager';
+import { DebugLogger } from '@core/Logging/DebugLogger';
 
 /**
  * Static class to Handle all Document events
@@ -17,6 +18,9 @@ export class HtmlDocument extends Html {
   
   public getElement(id: string, elementRef: HtmlElement): HTMLElement {
     this.htmlElementManager.addElement(elementRef);
+    if (!document.getElementById(id)) {
+      DebugLogger.errorThrow(`No element found with id:'${id}'.`);
+    }
     return document.getElementById(id);
   }
   

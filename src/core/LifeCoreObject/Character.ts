@@ -24,6 +24,7 @@ export class Character extends Pawn {
   private moveBackward: boolean;
   private moveLeft: boolean;
   private moveRight: boolean;
+  private canSprint: boolean;
   private canJump: boolean;
   private velocity: Vector3;
   
@@ -39,6 +40,7 @@ export class Character extends Pawn {
         's': () => this.moveBackward = true,
         'a': () => this.moveLeft = true,
         'd': () => this.moveRight = true,
+        'shift': () => this.canSprint = true,
         ' ': () => {
           if (this.canJump === true) {
             this.velocity.y += 350;
@@ -51,6 +53,7 @@ export class Character extends Pawn {
         's': () => this.moveBackward = false,
         'a': () => this.moveLeft = false,
         'd': () => this.moveRight = false,
+        'shift': () => this.canSprint = false
       }
     }
   }
@@ -60,14 +63,21 @@ export class Character extends Pawn {
   }
   
   public keyUp(event: KeyboardEvent): void {
-    if (this.keyMap.onKeyUp[event.key]) {
-      this.keyMap.onKeyUp[event.key]();
+    if (event.shiftKey) {
+      this.keyMap.onKeyUp[event.key.toLowerCase()]();
+    }
+    // on keyup shift key is addressed however not on key down
+    if (this.keyMap.onKeyUp[event.key.toLowerCase()]) {
+      this.keyMap.onKeyUp[event.key.toLowerCase()]();
     }
   }
   
   public keyDown(event: KeyboardEvent): void {
-    if (this.keyMap.onKeyDown[event.key]) {
-      this.keyMap.onKeyDown[event.key]();
+    if (event.shiftKey) {
+      this.keyMap.onKeyDown['shift']();
+    }
+    if (this.keyMap.onKeyDown[event.key.toLowerCase()]) {
+      this.keyMap.onKeyDown[event.key.toLowerCase()]();
     }
   }
   
@@ -91,11 +101,16 @@ export class Character extends Pawn {
     
     this.velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
     
-    if (this.moveForward) this.velocity.z -= 400.0 * delta;
-    if (this.moveBackward) this.velocity.z += 400.0 * delta;
+    let sprintMultiplier: number = 1;
+    if (this.canSprint === true) {
+      sprintMultiplier = 2;
+    }
     
-    if (this.moveLeft) this.velocity.x -= 400.0 * delta;
-    if (this.moveRight) this.velocity.x += 400.0 * delta;
+    if (this.moveForward) this.velocity.z -= (400.0 * delta * sprintMultiplier);
+    if (this.moveBackward) this.velocity.z += (400.0 * delta * sprintMultiplier);
+    
+    if (this.moveLeft) this.velocity.x -= (400.0 * delta * sprintMultiplier);
+    if (this.moveRight) this.velocity.x += (400.0 * delta * sprintMultiplier);
     
     if (isOnObject === true) {
       this.velocity.y = Math.max(0, this.velocity.y);
