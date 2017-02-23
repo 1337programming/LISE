@@ -1,5 +1,7 @@
 # LISE
-Life In Shambles Engine
+Life In Shambles Engine - Game Development Engine in WebGL
+
+This project is just a playground for building a point and click like game development expierence.
 
 ## Requirements
 1. Node
@@ -29,7 +31,7 @@ Build:
 
 ## TODO
 
-- [ ] Abstract main
+- [x] Abstract main
 - [ ] Ava Testing (Remove Jasmine)
 - [ ] Import MVC (Angular 2 or React or Vue)
 - [ ] AI Design Pattern
