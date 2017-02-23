@@ -24,6 +24,7 @@ export class HtmlEventManager extends DomBase {
    * @param target The event target
    * @param useCapture Indicates that events of this type will be dispatched to the registered listener before being
    * dispatched to any EventTarget beneath it in the DOM tree.
+   * @TODO use enum for target
    */
   public addEvent(key: string, listener: (env: any) => any, target: Document | Window | HTMLElement | Element = document, useCapture: boolean = false): void {
     if (this.eventMap[key]) {

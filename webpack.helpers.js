@@ -51,7 +51,15 @@ exports.rules = function (prod) {
      */
     {
       test: /\.ts$/,
-      use: 'awesome-typescript-loader'
+      use: [
+        {
+          loader: 'awesome-typescript-loader',
+          options: {
+            configFileName: 'tsconfig.json'
+          }
+        }
+      ],
+      exclude: [/\.(spec|e2e)\.ts$/]
     },
     /*
      * Json loader support for *.json files.

@@ -38,7 +38,8 @@ module.exports = function (env) {
      * See: http://webpack.github.io/docs/configuration.html#entry
      */
     entry: {
-      'main': './src/main.ts'
+      'main': './src/main.ts',
+      'polyfills': './src/polyfills'
     },
     
     /**
@@ -91,7 +92,7 @@ module.exports = function (env) {
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'body'
-      }),
+      })
     ],
     
     /**
