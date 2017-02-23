@@ -1,5 +1,5 @@
 import { DomBase } from './DomBase';
-import { DebugLogger } from '@core/Logging/DebugLogger';
+import { DebugLogger } from '@Engine/Logging/DebugLogger';
 
 /**
  * Manages DOM events

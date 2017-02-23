@@ -1,4 +1,4 @@
-import { CoreObjectBaseUtility } from './CoreObjectBaseUtility';
+import { CoreObjectBaseUtility } from '@Engine/CoreObject/CoreObjectBaseUtility';
 
 /**
  * The base class of all CoreObjects.

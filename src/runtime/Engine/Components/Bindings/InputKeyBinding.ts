@@ -1,7 +1,7 @@
 import { InputBinding } from './InputBinding';
 import { KeyBinding } from './KeyBinding';
-import { KEY_MAP } from '@core/Constants/KeyMap';
-import { DebugLogger } from '@core/Logging/DebugLogger';
+import { KEY_MAP } from '@Engine/Constants/KeyMap';
+import { DebugLogger } from '@Engine/Logging/DebugLogger';
 /**
  * Binds a delegate to a key chord.
  */

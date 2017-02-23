@@ -1,19 +1,16 @@
-import { Pawn } from './Pawn';
-import { PlayerController } from '@core/LifeCoreObject/PlayerController';
-import { PerspectiveCameraActor } from '@core/LifeCoreObject/PerspectiveCameraActor';
-import { HtmlWindow } from '../../runtime/DOM/HtmlWindow';
-import { Vector3, Raycaster, Intersection, Mesh } from 'three';
-import { World } from '@core/LifeCoreObject/World';
-import Camera = THREE.Camera;
-import PerspectiveCamera = THREE.PerspectiveCamera;
-import Object3D = THREE.Object3D;
+import { Vector3, Raycaster, Intersection, Mesh, Camera, Object3D } from 'three';
+import { Pawn } from '@Engine/CoreObject/Pawn';
+import { PlayerController } from '@Engine/CoreObject/PlayerController';
+import { PerspectiveCameraActor } from '@Engine/CoreObject/PerspectiveCameraActor';
+import { World } from '@Engine/CoreObject/World';
+import { HtmlWindow } from '@Engine/DOM/HtmlWindow';
 
 /**
  * Characters are Pawns that have a mesh, collision, and built-in movement logic. They are responsible
  * for all physical interaction between the player or AI and the world, and also implement basic networking and input
  * models. They are designed for a vertically-oriented player representation that can walk, jump, fly, and swim through
  * the world using CharacterMovementComponent.
- * @module LifeCoreObject
+ * @module CoreObject
  */
 export class Character extends Pawn {
   

@@ -1,7 +1,7 @@
-import { Controller } from '@core/LifeCoreObject/Controller';
-import { PointerLockControls } from '../../runtime/actor/controls/PointerLockControls';
-import { PerspectiveCameraActor } from '@core/LifeCoreObject/PerspectiveCameraActor';
 import { Vector3, Object3D } from 'three';
+import { Controller } from '@Engine/CoreObject/Controller';
+import { PerspectiveCameraActor } from '@Engine/CoreObject/PerspectiveCameraActor';
+import { PointerLockControls } from '@Engine/CoreObject/PointerLockControls';
 
 /**
  * PlayerControllers are used by human players to control Pawns.

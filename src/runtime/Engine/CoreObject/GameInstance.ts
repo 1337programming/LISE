@@ -13,14 +13,14 @@ import {
   FlatShading,
   HemisphereLight
 } from 'three';
-import { Actor } from '@core/LifeCoreObject/Actor';
-import { World } from '@core/LifeCoreObject/World';
-import { Character } from '@core/LifeCoreObject/Character';
-import { HtmlElementManager } from '../../runtime/DOM/HtmlElementManager';
-import { HtmlEventManager } from '../../runtime/DOM/HtmlEventManager';
-import { HtmlDocument } from '../../runtime/DOM/HtmlDocument';
-import { WebGLRenderDelegate } from '../../runtime/DOM/WebGLRenderDelegate';
-import { HtmlWindow } from '../../runtime/DOM/HtmlWindow';
+import { Actor } from '@Engine/CoreObject/Actor';
+import { World } from '@Engine/CoreObject/World';
+import { Character } from '@Engine/CoreObject/Character';
+import { WebGLRenderDelegate } from '@Engine/DOM/WebGLRenderDelegate';
+import { HtmlElementManager } from '@Engine/DOM/HtmlElementManager';
+import { HtmlEventManager } from '@Engine/DOM/HtmlEventManager';
+import { HtmlDocument } from '@Engine/DOM/HtmlDocument';
+import { HtmlWindow } from '@Engine/DOM/HtmlWindow';
 
 /**
  * Handles Game Creation
@@ -100,54 +100,55 @@ export class GameInstance extends Actor {
     this.blocker = document.getElementById('blocker');
     this.instructions = document.getElementById('instructions');
     let havePointerLock: boolean = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
-  
+    
     if (havePointerLock) {
       let element: HTMLElement = document.body;
-    
+      
       let scope: GameInstance = this;
       let pointerlockchange = (event) => {
         if (document.pointerLockElement === element) {
-        
+          
           scope.controlsEnabled = true;
           scope.player.enableControls();
-        
+          
           scope.blocker.style.display = 'none';
-        
+          
         } else {
-        
+          
           scope.player.disableControls();
-        
+          
           scope.blocker.style.display = '-webkit-box';
           scope.blocker.style.display = '-moz-box';
           scope.blocker.style.display = 'box';
-        
+          
           scope.instructions.style.display = '';
-        
+          
         }
       };
-    
+      
       let pointerlockerror = (event) => {
-      
+        
         scope.instructions.style.display = '';
-      
+        
       };
-    
+      
+      
       // Hook pointer lock state change events
       document.addEventListener('pointerlockchange', pointerlockchange, false);
       document.addEventListener('mozpointerlockchange', pointerlockchange, false);
       document.addEventListener('webkitpointerlockchange', pointerlockchange, false);
-    
+      
       document.addEventListener('pointerlockerror', pointerlockerror, false);
       document.addEventListener('mozpointerlockerror', pointerlockerror, false);
       document.addEventListener('webkitpointerlockerror', pointerlockerror, false);
-    
+      
       scope.instructions.addEventListener('click', (event) => {
-      
+        
         scope.instructions.style.display = 'none';
-      
+        
         // Ask the browser to lock the pointer
         element.requestPointerLock();
-      
+        
       }, false);
     } else {
       this.instructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';

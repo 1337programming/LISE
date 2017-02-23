@@ -1,5 +1,5 @@
-import { Actor } from '@core/LifeCoreObject/Actor';
 import { Scene, Object3D, Fog } from 'three';
+import { Actor } from '@Engine/CoreObject/Actor';
 
 export class World extends Actor {
   

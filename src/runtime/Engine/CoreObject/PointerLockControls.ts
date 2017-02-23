@@ -1,8 +1,9 @@
 import { Camera, Object3D, Vector3, Euler } from 'three';
-import { PI_2 } from '../../../core/Constants/Math';
+import { Controller } from '@Engine/CoreObject/Controller';
+import { PI_2 } from '@Engine/Constants/Math';
 
 
-export class PointerLockControls {
+export class PointerLockControls extends Controller {
   
   public enabled: boolean;
   private pitchObject: Object3D;
@@ -10,6 +11,7 @@ export class PointerLockControls {
   private dispose: () => void;
   
   constructor(private camera: Camera) {
+    super();
     let scope: any = this; // Reference to class
     this.camera.rotation.set(0, 0, 0);
     

@@ -1,7 +1,5 @@
-import { Actor } from '@core/LifeCoreObject/Actor';
-import { Object3D } from 'three';
-import { PointerLockControls } from '../../runtime/actor/controls/PointerLockControls';
 
+import { Actor } from '@Engine/CoreObject/Actor';
 /**
  * Controllers are non-physical actors that can possess a Pawn to control its actions. PlayerControllers are used by
  * human players to control pawns, while AIControllers implement the artificial intelligence for the pawns they control.

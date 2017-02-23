@@ -1,7 +1,8 @@
 /**
  * Base class for CoreObject
- * @module LifeCoreObject
+ * @module CoreObject
  */
+
 export class CoreObjectBase {
   
   private id: ArrayBufferView;

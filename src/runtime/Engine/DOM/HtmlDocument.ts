@@ -2,7 +2,7 @@ import { Html } from './Html';
 import { HtmlElementManager } from './HtmlElementManager';
 import { HtmlElement } from './HtmlElement';
 import { HtmlEventManager } from './HtmlEventManager';
-import { DebugLogger } from '@core/Logging/DebugLogger';
+import { DebugLogger } from '@Engine/Logging/DebugLogger';
 
 /**
  * Static class to Handle all Document events

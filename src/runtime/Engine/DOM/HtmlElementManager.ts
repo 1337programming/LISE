@@ -1,6 +1,6 @@
 import { Html } from './Html';
 import { HtmlElement } from './HtmlElement';
-import { DebugLogger } from '@core/Logging/DebugLogger';
+import { DebugLogger } from '@Engine/Logging/DebugLogger';
 
 /**
  * @module DOM

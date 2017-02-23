@@ -1,5 +1,5 @@
-import { CameraActor } from '@core/LifeCoreObject/CameraActor';
 import { PerspectiveCamera, Camera } from 'three';
+import { CameraActor } from '@Engine/CoreObject/CameraActor';
 
 export class PerspectiveCameraActor extends CameraActor {
   

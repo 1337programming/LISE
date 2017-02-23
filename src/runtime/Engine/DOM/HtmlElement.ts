@@ -1,6 +1,6 @@
 import { Html } from './Html';
 import { HtmlDocument } from './HtmlDocument';
-import { DebugLogger } from '@core/Logging/DebugLogger';
+import { DebugLogger } from '@Engine/Logging/DebugLogger';
 
 /**
  * HtmlElement Instance Class

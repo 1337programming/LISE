@@ -16,8 +16,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@core/*": [
-        "./src/core/*"
+      "@Engine/*": [
+        "./src/runtime/Engine/*"
       ]
     },
     "typeRoots": [

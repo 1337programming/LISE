@@ -1,4 +1,4 @@
-import { GameInstance } from '@core/LifeCoreObject/GameInstance';
+import { GameInstance } from '@Engine/CoreObject/GameInstance';
 
 export class MainGame {
   
