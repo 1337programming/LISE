@@ -1,6 +1,8 @@
 import { Html } from './Html';
 import { HtmlDocument } from './HtmlDocument';
 import { DebugLogger } from '@Engine/Logging/DebugLogger';
+import { HtmlElementManager } from '@Engine/DOM/HtmlElementManager';
+import { HtmlEventManager } from '@Engine/DOM/HtmlEventManager';
 
 /**
  * HtmlElement Instance Class
@@ -11,7 +13,8 @@ export class HtmlElement extends Html {
   private element: HTMLElement;
   private display: HtmlElementDisplayState;
   
-  constructor(private id: string, private htmlDocument: HtmlDocument,
+  constructor(private id: string, private htmlDocument: HtmlDocument, private htmlElementManager: HtmlElementManager,
+              private htmlEventManager: HtmlEventManager,
               state: HtmlElementDisplayState = HtmlElementDisplayState.Box) {
     super();
     this.setElement(id);
@@ -45,6 +48,10 @@ export class HtmlElement extends Html {
   
   public overwriteInnerHtml(str: string): void {
     this.element.innerHTML = str;
+  }
+  
+  public addEventListener(key: string, listener: (env: any) => any, useCapture: boolean = false): void {
+    this.htmlEventManager.addEvent(key, listener, this.getElement(), useCapture);
   }
   
   protected getElement(): HTMLElement {

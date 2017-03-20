@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "test": "nyc ava src/*.spec.ts && npm run lint",
-    "start": "webpack-dev-server --progress --profile --watch --inline --hot",
+    "start": "webpack-dev-server --progress --profile --watch --inline --hot --open",
     "build": "webpack --progress --profile --env.production",
     "lint": "tslint \"src/**/*.ts\" -s node_modules/snazzy -t stylish",
     "docs": "typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/"

@@ -16,4 +16,8 @@ export class MainGame {
     this.gameInstance.animate();
   }
   
+  public init(): void {
+    
+  }
+  
 }

@@ -35,7 +35,7 @@ export class GameInstance extends Actor {
   private htmlDocument: HtmlDocument;
   private controlsEnabled: boolean;
   
-  private raycaster: Raycaster; //@TODO Where should this go?
+  private raycaster: Raycaster; // @TODO Where should this go?
   private objects: Mesh[];
   
   private blocker: HTMLElement;
@@ -75,14 +75,13 @@ export class GameInstance extends Actor {
   }
   
   public animate(): void {
-    let scope: GameInstance = this;
     
     let animate = () => {
       requestAnimationFrame(animate);
       if (this.controlsEnabled) {
-        let time: number = scope.player.animate(scope.raycaster, scope.objects);
-        scope.world.frameTime = time;
-        scope.webGLRenderDelegate.render(scope.world.getScene(), scope.player.getCamera());
+        let time: number = this.player.animate(this.raycaster, this.objects);
+        this.world.frameTime = time;
+        this.webGLRenderDelegate.render(this.world.getScene(), this.player.getCamera());
       }
     };
     
@@ -104,47 +103,48 @@ export class GameInstance extends Actor {
     if (havePointerLock) {
       let element: HTMLElement = document.body;
       
-      let scope: GameInstance = this;
       let pointerlockchange = (event) => {
         if (document.pointerLockElement === element) {
           
-          scope.controlsEnabled = true;
-          scope.player.enableControls();
+          this.controlsEnabled = true;
+          this.player.enableControls();
           
-          scope.blocker.style.display = 'none';
+          this.blocker.style.display = 'none';
           
         } else {
           
-          scope.player.disableControls();
+          this.player.disableControls();
           
-          scope.blocker.style.display = '-webkit-box';
-          scope.blocker.style.display = '-moz-box';
-          scope.blocker.style.display = 'box';
+          this.blocker.style.display = '-webkit-box';
+          this.blocker.style.display = '-moz-box';
+          this.blocker.style.display = 'box';
           
-          scope.instructions.style.display = '';
+          this.instructions.style.display = '';
           
         }
       };
       
       let pointerlockerror = (event) => {
         
-        scope.instructions.style.display = '';
+        this.instructions.style.display = '';
         
       };
       
+      // this.htmlDocument.addEventListener('pointerlockchange', pointerlockchange, )
+      
+      this.htmlDocument.addEventListener('pointerlockchange', pointerlockchange, false);
+      this.htmlDocument.addEventListener('mozpointerlockchange', pointerlockchange, false);
+      this.htmlDocument.addEventListener('webkitpointerlockchange', pointerlockchange, false);
+  
+      this.htmlDocument.addEventListener('pointerlockerror', pointerlockerror, false);
+      this.htmlDocument.addEventListener('mozpointerlockerror', pointerlockerror, false);
+      this.htmlDocument.addEventListener('webkitpointerlockerror', pointerlockerror, false);
       
       // Hook pointer lock state change events
-      document.addEventListener('pointerlockchange', pointerlockchange, false);
-      document.addEventListener('mozpointerlockchange', pointerlockchange, false);
-      document.addEventListener('webkitpointerlockchange', pointerlockchange, false);
       
-      document.addEventListener('pointerlockerror', pointerlockerror, false);
-      document.addEventListener('mozpointerlockerror', pointerlockerror, false);
-      document.addEventListener('webkitpointerlockerror', pointerlockerror, false);
-      
-      scope.instructions.addEventListener('click', (event) => {
+      this.instructions.addEventListener('click', (event) => {
         
-        scope.instructions.style.display = 'none';
+        this.instructions.style.display = 'none';
         
         // Ask the browser to lock the pointer
         element.requestPointerLock();
@@ -158,10 +158,9 @@ export class GameInstance extends Actor {
   // @TODO make this optional
   private setResize(): void {
     // Gets called every on window resize event
-    let scope: GameInstance = this;
     let onWindowResize: () => void = () => {
-      scope.player.updateCamera(HtmlWindow.getScreenAspect()); // @TODO params?
-      scope.webGLRenderDelegate.setSize();
+      this.player.updateCamera(HtmlWindow.getScreenAspect()); // @TODO params?
+      this.webGLRenderDelegate.setSize();
     };
     this.eventManager.addEvent('resize', onWindowResize, window, false);
   }
@@ -178,14 +177,13 @@ export class GameInstance extends Actor {
   
   // @TODO deprecate this once editor is complete
   private setKeyboardBindings(): void {
-    let scope: GameInstance = this;
     
     let onKeyDown = (event: KeyboardEvent) => {
-      scope.player.keyDown(event);
+      this.player.keyDown(event);
     };
     
     let onKeyUp = (event: KeyboardEvent) => {
-      scope.player.keyUp(event);
+      this.player.keyUp(event);
     };
     
     this.eventManager.addEvent('keydown', onKeyDown, document, false);

@@ -1,4 +1,6 @@
 import { Html } from './Html';
+import { HtmlElementManager } from '@Engine/DOM/HtmlElementManager';
+import { HtmlEventManager } from '@Engine/DOM/HtmlEventManager';
 
 /**
  * Static class to Handle all Window events & Data
@@ -8,6 +10,7 @@ import { Html } from './Html';
  * @singleton
  */
 export class HtmlWindow extends Html {
+  
   
   public static getPixelRation(): number {
     return window.devicePixelRatio;
@@ -25,8 +28,11 @@ export class HtmlWindow extends Html {
     return window.innerWidth / window.innerHeight;
   }
   
-  constructor() {
+  constructor(private htmlElementManager: HtmlElementManager, private htmlEventManager: HtmlEventManager) {
     super();
   }
   
+  public addEventListener(key: string, listener: (env: any) => any, useCapture: boolean = false): void {
+    this.htmlEventManager.addEvent(key, listener, window, useCapture);
+  }
 }
