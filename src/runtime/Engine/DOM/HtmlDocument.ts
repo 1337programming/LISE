@@ -26,9 +26,11 @@ export class HtmlDocument extends Html {
   }
   
   public getBody(elementRef: HtmlElement): HTMLElement {
-    this.checkRegisterElement('body', elementRef, true);
-    this.htmlElementManager.addElement(elementRef, true);
     return document.body;
+  }
+  
+  public appendToBody(newChild: Node): void {
+    document.body.appendChild(newChild);
   }
   
   public addEventListener(key: string, listener: (env: any) => any, useCapture: boolean = false): void {
@@ -44,7 +46,7 @@ export class HtmlDocument extends Html {
     return document.pointerLockElement === element;
   }
   
-  public checkRegisterElement(id: string, elementRef: HtmlElement, body: boolean = false): boolean {
+  public checkRegisterElement(id: string, elementRef?: HtmlElement, body: boolean = false): boolean {
     if (!this.htmlElementManager.elementExist(id)) {
       this.htmlElementManager.addElement(elementRef, body);
       return false; // Was not registered and now has

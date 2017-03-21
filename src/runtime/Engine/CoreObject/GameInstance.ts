@@ -125,9 +125,7 @@ export class GameInstance extends Actor {
       };
       
       let pointerlockerror = (event) => {
-        
         this.instructions.style.display = '';
-        
       };
       
       // this.htmlDocument.addEventListener('pointerlockchange', pointerlockchange, )
@@ -135,7 +133,7 @@ export class GameInstance extends Actor {
       this.htmlDocument.addEventListener('pointerlockchange', pointerlockchange, false);
       this.htmlDocument.addEventListener('mozpointerlockchange', pointerlockchange, false);
       this.htmlDocument.addEventListener('webkitpointerlockchange', pointerlockchange, false);
-  
+      
       this.htmlDocument.addEventListener('pointerlockerror', pointerlockerror, false);
       this.htmlDocument.addEventListener('mozpointerlockerror', pointerlockerror, false);
       this.htmlDocument.addEventListener('webkitpointerlockerror', pointerlockerror, false);
@@ -172,7 +170,8 @@ export class GameInstance extends Actor {
     this.webGLRenderDelegate.setSize();
     
     // @TODO secure this
-    document.body.appendChild(this.webGLRenderDelegate.getCanvas());
+    this.htmlDocument.appendToBody(this.webGLRenderDelegate.getCanvas());
+    // document.body.appendChild(this.webGLRenderDelegate.getCanvas());
   }
   
   // @TODO deprecate this once editor is complete
@@ -211,21 +210,17 @@ export class GameInstance extends Actor {
     geometry.rotateX(-Math.PI / 2);
     
     for (let i: number = 0, l = geometry.vertices.length; i < l; i++) {
-      
       let vertex: Vector3 = geometry.vertices[i];
       vertex.x += Math.random() * 20 - 10;
       vertex.y += Math.random() * 2;
       vertex.z += Math.random() * 20 - 10;
-      
     }
     
     for (let i: number = 0, l = geometry.faces.length; i < l; i++) {
-      
       let face: Face3 = geometry.faces[i];
       face.vertexColors[0] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
       face.vertexColors[1] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
       face.vertexColors[2] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
-      
     }
     
     let material = new MeshBasicMaterial({vertexColors: VertexColors});
@@ -238,26 +233,20 @@ export class GameInstance extends Actor {
     let geometry = new BoxGeometry(20, 20, 20);
     
     for (let i: number = 0, l = geometry.faces.length; i < l; i++) {
-      
       let face: Face3 = geometry.faces[i];
       face.vertexColors[0] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
       face.vertexColors[1] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
       face.vertexColors[2] = new Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
-      
     }
     
     for (let i: number = 0; i < 500; i++) {
-      
       let material = new MeshPhongMaterial({specular: 0xffffff, shading: FlatShading, vertexColors: VertexColors});
-      
       let mesh: Mesh = new Mesh(geometry, material);
       mesh.position.x = Math.floor(Math.random() * 20 - 10) * 20;
       mesh.position.y = Math.floor(Math.random() * 20) * 20 + 10;
       mesh.position.z = Math.floor(Math.random() * 20 - 10) * 20;
       this.world.addObject(mesh);
-      
       material.color.setHSL(Math.random() * 0.2 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
-      
       this.objects.push(mesh);
     }
   }
